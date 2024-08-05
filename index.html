@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>撲克手牌紀錄</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>撲克手牌紀錄</h1>
+        
+        <!-- 環境變數輸入 -->
+        <div class="environment-inputs">
+            <h2>環境變數</h2>
+            <label for="level">Level:</label>
+            <input type="text" id="level">
+            
+            <label for="players">玩家人數:</label>
+            <input type="number" id="players" min="2" max="10">
+            
+            <label for="heroPosition">Hero 位置:</label>
+            <input type="test" id="heroPosition">
+            
+            <label for="heroStack">Hero 後手:</label>
+            <input type="number" id="heroStack" min="0">
+            
+            <label for="otherStacks">其他玩家後手:</label>
+            <input type="text" id="otherStacks">
+
+            <button id="nextStepBtn">下一步</button>
+        </div>
+
+        <div class="card-selector">
+            <h2>選擇撲克牌</h2>
+            <div id="cardGallery">
+                <!-- 用 JavaScript 填充圖片 -->
+            </div>
+        </div>
+
+        <!-- Hero 手牌和下注信息 -->
+        <div class="hero-hand-inputs hidden">
+            <h2>Hero 手牌和下注信息</h2>
+            <label for="heroHand1">Hero 手牌 :</label>
+            <input type="text" id="heroHands">
+
+
+            <label for="preFlopAction">Preflop Action:</label>
+            <input type="text" id="preFlopAction">
+            <br>
+            <label for="flopCards">Flop:</label>
+            <input type="text" id="flopCards">
+
+            <label for="flopAction">Flop Action:</label>
+            <input type="text" id="flopAction">
+            <br>
+            <label for="turnCard">Turn:</label>
+            <input type="text" id="turnCard">
+
+            <label for="turnAction">Turn Action:</label>
+            <input type="text" id="turnAction">
+            <br>
+            <label for="riverCard">River:</label>
+            <input type="text" id="riverCard">
+
+            <label for="riverAction">River Action:</label>
+            <input type="text" id="riverAction">
+
+            <button id="recordHandBtn">紀錄手牌</button>
+        </div>
+
+        <!-- 顯示手牌和紀錄 -->
+        <div class="card-display">
+            <h2>手牌顯示</h2>
+            <div id="cards"></div>
+        </div>
+
+        <div class="hand-summary">
+            <h2>手牌紀錄</h2>
+            <pre id="handSummary"></pre>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+<script>
+    document.getElementById('nextStepBtn').addEventListener('click', function() {
+        // 隱藏環境變數區域，顯示 Hero 手牌和下注信息區域
+        document.querySelector('.environment-inputs').classList.add('hidden');
+        document.querySelector('.hero-hand-inputs').classList.remove('hidden');
+    });
+    
+    const suits = ['h', 's', 'd', 'clubs'];
+    const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    const cardGallery = document.getElementById('cardGallery');
+    
+    // 当前活动的输入字段
+    let activeInputId = '';
+    
+    const updateInputField = (cardDisplay) => {
+        const inputField = document.getElementById(activeInputId);
+        const currentValue = inputField.value;
+        // 将新卡片添加到当前值中
+        inputField.value = currentValue + cardDisplay;
+    };
+    
+    // 生成撲克牌圖片并处理点击事件
+    suits.forEach(suit => {
+        ranks.forEach(rank => {
+            const cardImage = document.createElement('img');
+            cardImage.src = `images/${suit}_${rank}.png`;
+            cardImage.alt = `${rank} of ${suit}`;
+            cardImage.classList.add('card-thumbnail');
+            cardImage.dataset.card = `${suit}_${rank}`;
+            cardImage.dataset.display = `${rank}${suit.charAt(0).toLowerCase()}`; // 例如 'Ah', 'Kh'
+            
+            cardImage.addEventListener('click', function() {
+                const cardDisplay = cardImage.dataset.display;
+    
+                if (activeInputId) {
+                    updateInputField(cardDisplay);
+                }
+            });
+    
+            cardGallery.appendChild(cardImage);
+        });
+    });
+    
+    // 监听输入字段的选择
+    const inputFields = ['heroHands', 'flopCards', 'turnCard', 'riverCard'];
+    
+    inputFields.forEach(fieldId => {
+        document.getElementById(fieldId).addEventListener('focus', function() {
+            activeInputId = fieldId;
+        });
+    });
+    
+    document.getElementById('recordHandBtn').addEventListener('click', function() {
+        const level = document.getElementById('level').value;
+        const players = document.getElementById('players').value;
+        const heroPosition = document.getElementById('heroPosition').value;
+        const heroStack = document.getElementById('heroStack').value;
+        const otherStacks = document.getElementById('otherStacks').value;
+    
+        const heroHands = document.getElementById('heroHands').value;
+        const preFlopAction = document.getElementById('preFlopAction').value;
+        const flopCards = document.getElementById('flopCards').value;
+        const flopAction = document.getElementById('flopAction').value;
+        const turnCard = document.getElementById('turnCard').value;
+        const turnAction = document.getElementById('turnAction').value;
+        const riverCard = document.getElementById('riverCard').value;
+        const riverAction = document.getElementById('riverAction').value;
+    
+        const handSummary = `
+    Level: ${level}
+    玩家人數: ${players}
+    Hero 位置: ${heroPosition}
+    Hero 後手: ${heroStack}
+    其他玩家後手: ${otherStacks}
+    
+    Hero 手牌: ${heroHands}
+    翻前下注尺寸: ${preFlopAction}
+    Flop 開的牌: ${flopCards}
+    Flop 下注尺寸: ${flopAction}
+    Turn 開的牌: ${turnCard}
+    Turn 下注尺寸: ${turnAction}
+    River 開的牌: ${riverCard}
+    River 下注尺寸: ${riverAction}
+        `;
+    
+        // Display the summary (optional)
+        document.getElementById('handSummary').textContent = handSummary;
+    
+        // Send data to backend
+        fetch('/send-message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: handSummary })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
+    </script>

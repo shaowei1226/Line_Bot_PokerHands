@@ -1,0 +1,96 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.environment-inputs, .hero-hand-inputs, .card-display, .hand-summary {
+    margin-bottom: 20px;
+}
+
+.environment-inputs label, .hero-hand-inputs label, .hand-summary label {
+    display: block;
+    margin: 5px 0;
+}
+
+.environment-inputs input, .hero-hand-inputs input, .hero-hand-inputs select, .environment-inputs button {
+    margin: 5px 0;
+}
+
+.card-display {
+    text-align: center;
+}
+.card-selector {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#cardGallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-thumbnail {
+    width: 70px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.card-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.suit-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.card-thumbnail {
+    width: 70px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.card-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+#cards img {
+    width: 100px;
+    margin: 10px;
+}
+
+.hand-summary {
+    text-align: left;
+}
+
+pre {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* 隱藏未顯示的區域 */
+.hidden {
+    display: none;
+}
