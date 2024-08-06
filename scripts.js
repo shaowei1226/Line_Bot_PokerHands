@@ -1,11 +1,3 @@
-// scripts.js
-document.getElementById('nextStepBtn').addEventListener('click', function() {
-    // 隱藏環境變數區域，顯示 Hero 手牌和下注信息區域
-    document.querySelector('.environment-inputs').classList.add('hidden');
-    document.querySelector('.hero-hand-inputs').classList.remove('hidden');
-});
-
-
 const cardGallery = document.getElementById('cardGallery');
 
 // 当前活动的输入字段
@@ -15,12 +7,12 @@ let activeInputId = '';
 
 
 // 监听输入字段的选择
-//const inputFields = ['heroHands', 'flopCards', 'turnCard', 'riverCard'];
-//inputFields.forEach(fieldId => {
-    //document.getElementById(fieldId).addEventListener('focus', function() {
-        //activeInputId = fieldId;
-   // });
-//);
+const inputFields = ['heroHands', 'flopCards', 'turnCard', 'riverCard'];
+inputFields.forEach(fieldId => {
+    document.getElementById(fieldId).addEventListener('focus', function() {
+        activeInputId = fieldId;
+    });
+});
 
 
 
@@ -32,14 +24,14 @@ document.getElementById('recordHandBtn').addEventListener('click', function() {
     const heroStack = document.getElementById('heroStack').value;
     const otherStacks = document.getElementById('otherStacks').value;
 
-    const heroHand1 = document.getElementById('heroHand').value;
-    const preFlopBet = document.getElementById('preFlopAction').value;
+    const heroHand = document.getElementById('heroHands').value;
+    const preFlopAction = document.getElementById('preFlopAction').value;
     const flopCards = document.getElementById('flopCards').value;
-    const flopBet = document.getElementById('flopAction').value;
+    const flopAction = document.getElementById('flopAction').value;
     const turnCard = document.getElementById('turnCard').value;
-    const turnBet = document.getElementById('turnAction').value;
+    const turnAction = document.getElementById('turnAction').value;
     const riverCard = document.getElementById('riverCard').value;
-    const riverBet = document.getElementById('riverAction').value;
+    const riverAction = document.getElementById('riverAction').value;
 
     const handSummary = `
 Level: ${level}
