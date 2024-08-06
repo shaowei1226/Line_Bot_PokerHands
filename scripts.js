@@ -41,7 +41,7 @@ Hero 後手: ${heroStack}
 其他玩家後手: ${otherStacks}
 
 Hero 手牌: ${heroHand}
-PreFlopAction: ${preFlopAction}
+PreFlop Action: ${preFlopAction}
 Flop : ${flopCards}
 Flop Action: ${flopAction}
 Turn : ${turnCard}
@@ -51,4 +51,17 @@ River Action: ${riverAction}
     `;
 
     document.getElementById('handSummary').textContent = handSummary;
+});
+
+document.getElementById('copyHandBtn').addEventListener('click', function() {
+    const handSummaryText = document.getElementById('handSummary').textContent;
+
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = handSummaryText;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempTextArea);
+
+    alert('手牌資訊已複製');
 });
