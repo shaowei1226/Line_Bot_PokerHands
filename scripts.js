@@ -5,19 +5,13 @@ document.getElementById('nextStepBtn').addEventListener('click', function() {
     document.querySelector('.hero-hand-inputs').classList.remove('hidden');
 });
 
-const suits = ['h', 's', 'd', 'clubs'];
-const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
 const cardGallery = document.getElementById('cardGallery');
 
 // 当前活动的输入字段
 let activeInputId = '';
 
-const updateInputField = (cardDisplay) => {
-    const inputField = document.getElementById(activeInputId);
-    const currentValue = inputField.value;
-    // 将新卡片添加到当前值中
-    inputField.value = currentValue + cardDisplay;
-};
+
 
 
 // 监听输入字段的选择
@@ -30,16 +24,7 @@ inputFields.forEach(fieldId => {
 });
 
 
-document.getElementById('addCardBtn').addEventListener('click', function() {
-    const suit = document.getElementById('suit').value;
-    const rank = document.getElementById('rank').value;
 
-    const cardImage = document.createElement('img');
-    cardImage.src = `images/${suit}_${rank}.png`;
-    cardImage.alt = `${rank} of ${suit}`;
-
-    document.getElementById('cards').appendChild(cardImage);
-});
 
 document.getElementById('recordHandBtn').addEventListener('click', function() {
     const level = document.getElementById('level').value;
