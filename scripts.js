@@ -59,22 +59,5 @@ River 開的牌: ${riverCard}
 River 下注尺寸: ${riverAction}
     `;
 
-    // Display the summary (optional)
     document.getElementById('handSummary').textContent = handSummary;
-
-    // Send data to Line Bot
-    fetch('/send-message', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message: handSummary })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
 });
