@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>撲克手牌紀錄</title>
-    <link rel="stylesheet" href="styles.css">
+    <style type="text/css">
+        .Data-Content {
+            width: 100%; /* 表單寬度 */
+            line-height: 40px;
+        }
+    
+        .Data-Title {
+            float: left;
+            width: 25%; /* Label寬度，視情況調整 */
+            margin-right: 20px;
+        }
+    
+        .Data-Items {
+            float: left;
+            width: 25%;
+        }
+    
+        .AlignRight {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -35,30 +55,42 @@
         <!-- Hero 手牌和下注信息 -->
         <div class="hero-hand-inputs hidden">
             <h2>Hero 手牌和下注信息</h2>
-            <label for="heroHand">Hero 手牌 :</label>
-            <input type="text" id="heroHands"><br>
+            <div class="Data-Content">
+                <div class="Data-Title">
+                    <div class="AlignRight">
+                        <label for="heroHand">Hero 手牌 :</label><br />                      
+                        <label for="preFlopAction">Preflop Action:</label><br />
+                        <label for="flopCards">Flop:</label><br />
+                        <label for="flopAction">Flop Action:</label><br/>
+                        <label for="turnCard">Turn:</label><br />
+                        <label for="turnAction">Turn Action:</label><br />
+                        <label for="riverCard">River:</label><br />
+                        <label for="riverAction">River Action:</label><br />
+                    </div>
+                </div>
+                <div class="Data-Items">
+                    
+            <input type="text" id="heroHands"><br />
+            <input type="text" id="preFlopAction"><br />
+            <input type="text" id="flopCards"><br />
+            <input type="text" id="flopAction"><br />
+            <input type="text" id="turnCard"><br />
+            <input type="text" id="turnAction"><br />
+            <input type="text" id="riverCard"><br />
+            <input type="text" id="riverAction"><br />
+                </div>
+            </div>
 
+            
+            
 
-            <label for="preFlopAction">Preflop Action:</label>
-            <input type="text" id="preFlopAction">
-            <br>
-            <label for="flopCards">Flop:</label>
-            <input type="text" id="flopCards">
+           
+           
+            
+            
 
-            <label for="flopAction">Flop Action:</label>
-            <input type="text" id="flopAction">
-            <br>
-            <label for="turnCard">Turn:</label>
-            <input type="text" id="turnCard">
-
-            <label for="turnAction">Turn Action:</label>
-            <input type="text" id="turnAction">
-            <br>
-            <label for="riverCard">River:</label>
-            <input type="text" id="riverCard">
-
-            <label for="riverAction">River Action:</label>
-            <input type="text" id="riverAction">
+            
+            
 
             <button id="recordHandBtn">紀錄手牌</button>
         </div>
