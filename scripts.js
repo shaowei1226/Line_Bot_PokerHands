@@ -15,13 +15,12 @@ let activeInputId = '';
 
 
 // 监听输入字段的选择
-const inputFields = ['heroHands', 'flopCards', 'turnCard', 'riverCard'];
-
-inputFields.forEach(fieldId => {
-    document.getElementById(fieldId).addEventListener('focus', function() {
-        activeInputId = fieldId;
-    });
-});
+//const inputFields = ['heroHands', 'flopCards', 'turnCard', 'riverCard'];
+//inputFields.forEach(fieldId => {
+    //document.getElementById(fieldId).addEventListener('focus', function() {
+        //activeInputId = fieldId;
+   // });
+//);
 
 
 
@@ -33,7 +32,7 @@ document.getElementById('recordHandBtn').addEventListener('click', function() {
     const heroStack = document.getElementById('heroStack').value;
     const otherStacks = document.getElementById('otherStacks').value;
 
-    const heroHand1 = document.getElementById('heroHand1').value;
+    const heroHand1 = document.getElementById('heroHand').value;
     const preFlopBet = document.getElementById('preFlopAction').value;
     const flopCards = document.getElementById('flopCards').value;
     const flopBet = document.getElementById('flopAction').value;
@@ -49,7 +48,7 @@ Hero 位置: ${heroPosition}
 Hero 後手: ${heroStack}
 其他玩家後手: ${otherStacks}
 
-Hero 手牌: ${heroHand1}
+Hero 手牌: ${heroHand}
 翻前下注尺寸: ${preFlopAction}
 Flop 開的牌: ${flopCards}
 Flop 下注尺寸: ${flopAction}
