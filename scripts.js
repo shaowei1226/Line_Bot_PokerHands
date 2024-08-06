@@ -41,13 +41,13 @@ Hero 後手: ${heroStack}
 其他玩家後手: ${otherStacks}
 
 Hero 手牌: ${heroHand}
-翻前下注尺寸: ${preFlopAction}
-Flop 開的牌: ${flopCards}
-Flop 下注尺寸: ${flopAction}
-Turn 開的牌: ${turnCard}
-Turn 下注尺寸: ${turnAction}
-River 開的牌: ${riverCard}
-River 下注尺寸: ${riverAction}
+PreFlopAction: ${preFlopAction}
+Flop : ${flopCards}
+Flop Action: ${flopAction}
+Turn : ${turnCard}
+Turn Action: ${turnAction}
+River : ${riverCard}
+River Action: ${riverAction}
     `;
 
     document.getElementById('handSummary').textContent = handSummary;
